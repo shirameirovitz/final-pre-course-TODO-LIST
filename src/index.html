@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My TODO List</title>
-    <script src="utils.js"></script>
-  </head>
-  <body></body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="status">
+      <span id="counter">0</span>
+      <span>TODOs</span>
+      <button onclick="sortList()">sort</button>
+    </div>
+    <div>
+        <input id="text-input" onkeypress="handleKeyPress(event)"></input>
+        <select id="priority-selector">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <button id="add-button" onclick="addItem()" >add</button>
+    </div>
+    <div id="todo-list">
+        <ul id="list">
+        </ul>
+    </div>
+
+    <script src="components/controller.js"></script>
+</body>
+<script>
+
+</script>
 </html>

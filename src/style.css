@@ -1,0 +1,7 @@
+.todo-container{
+    display: flex;    
+}
+.todo-created-at{
+    margin-left: 6px;
+    margin-right: 6px;
+}
