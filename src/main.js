@@ -1,39 +1,52 @@
+fetch("https://api.jsonbin.io/b/601433111de5467ca6bde502/2",{headers:{"secret-key":"$2b$10$rT9KA7aWo7ylVFwC/8i9yudVXkXAns0O7nj/vzhOi8BKQg.qYxU1e"}}).then(res=> res.json()).then(data => loadData(data));
+
+function loadData(data){
+
+    for(let i = 0; i <data.length; i++){
+        createItem(data[i].text, data[i].priority, data[i].date)
+    }
+}
+
 function addItem() {
-  const text = document.getElementById("text-input");
+    const text = document.getElementById("text-input");
+    if(text.value){
+        const priority = document.getElementById("priority-selector").value;
+        const date = new Date().toISOString().slice(0, 19).replace("T", " ")
+        createItem(text.value, priority, date);
+        text.value = ""; //clear input
+    }
+}
+function createItem(text, priority, date){
+    const list = document.getElementById("list");
+        //
+        let li = document.createElement("li");
 
-  const priority = document.getElementById("priority-selector").value;
-  const list = document.getElementById("list");
-  //
-  let li = document.createElement("li");
+        let main = document.createElement("div");
+        main.classList.add("todo-container");
 
-  let main = document.createElement("div");
-  main.classList.add("todo-container");
+        //priority
+        let priorityDiv = document.createElement("div");
+        priorityDiv.className = "todo-priority";
+        priorityDiv.innerText = priority;
+        //date
+        let DateDiv = document.createElement("div");
+        DateDiv.className = "todo-created-at";
+        DateDiv.innerText = date;
+        //todo string
+        let textDiv = document.createElement("div");
+        textDiv.className = "todo-text";
+        textDiv.innerText = text;
 
-  //priority
-  let priorityDiv = document.createElement("div");
-  priorityDiv.className = "todo-priority";
-  priorityDiv.innerText = priority;
-  //date
-  let DateDiv = document.createElement("div");
-  DateDiv.className = "todo-created-at";
-  DateDiv.innerText = new Date().toISOString().slice(0, 19).replace("T", " ");
-  //todo string
-  let textDiv = document.createElement("div");
-  textDiv.className = "todo-text";
-  textDiv.innerText = text.value;
+        main.appendChild(priorityDiv);
+        main.appendChild(DateDiv);
+        main.appendChild(textDiv);
 
-  main.appendChild(priorityDiv);
-  main.appendChild(DateDiv);
-  main.appendChild(textDiv);
+        li.appendChild(main);
+        list.appendChild(li);
 
-  li.appendChild(main);
-  list.appendChild(li);
-
-  //Counter increase
-  let counter = document.getElementById("counter");
-  counter.innerHTML = Number(document.getElementById("counter").innerHTML) + 1;
-
-  text.value = ""; //clear input
+        //Counter increase
+        let counter = document.getElementById("counter");
+        counter.innerHTML = Number(document.getElementById("counter").innerHTML) + 1;
 }
 
 //active enter key
