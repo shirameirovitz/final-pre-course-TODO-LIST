@@ -1,27 +1,113 @@
-body {
-    margin-left: 40%;
-    margin-top: 5%;
+ 
+body { 
+  font-family: Lato, Arial;
+  background-color: #e74c3c;
+  margin-top:5%;
+  
+}
+h1 {
+    margin-left:40%;
+  font-weight: normal;
+  font-size: 46px;
+  text-transform: uppercase;
+  display: block;
+    padding-left: 4px;
+}
+#input-todo {
+    margin-left:40%;
+}
+#todo-list {
+    margin-top:30px;
+    margin-left: 100px;
+    margin-right: 100px;
+    position:center;
+    background-color: orangered;
+    border-top: 50px solid rgb(126, 29, 29);
+}
+#status {
+    margin-left: 50%;
+}
+ul {
+    list-style-type: none;
+    margin-top: 40px;
+    padding-left:0;
+}
+li{
+    display: flex; 
+    outline:none;
+    border-bottom: solid 2px #c4df9b; 
+}
+.checkbox{
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 30px;
+  width: 30px; 
+margin-right: 10px;
+margin-top: 6px;
+box-sizing: 16px;
+outline: none;
 }
 
+.checkbox:hover{
+    background-color: rgb(163, 154, 154);
+}
 
 .todo-container{
-    display: flex;    
-}
+    display: flex; 
+    line-height: 60px;
+    font-size: 20px;
+    
+    
+} 
 .todo-created-at{
-    margin-left: 6px;
-    margin-right: 6px;
+    margin-left: 16px;
+    margin-right: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    color:white;
 }
+.todo-priority {
+    color: darkred;
+}
+
 input {
+    
     margin: 0;
     font-size: 18px;
     line-height: 18px;
     height: 18px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: none;
     background: #fff;
     border-radius: 6px;
     font-family: Lato, sans-serif;
     color: #888;
 }
 input:focus {
-    color: #333;
+    outline: none;
+    border: none;
+}
+
+#add-button{
+    background:none;
+    width:50px;
+    color: white;
+    text-align: center;
+    font-size: 36px;
+    cursor: pointer;
+    
+    font-weight: bold;
+    border-radius: 50%;
+}
+#add-button:hover { 
+    background-color: rgb(194, 64, 12);
+    color:rgb(85, 4, 4);
+    border: none;
+
+}
+#add-button:focus{
+    position: relative;
+    background-color:none;
+    border:none;
+    outline:none;
+}
