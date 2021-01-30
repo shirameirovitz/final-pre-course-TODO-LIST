@@ -18,8 +18,8 @@ function addItem() {
   if (text) {
     const priority = document.getElementById("priority-selector").value;
     const date = new Date().toISOString().slice(0, 19).replace("T", " ");
-    createItem(text.value, priority, date);
-    text.value = ""; //clear input
+    createItem(text, priority, date);
+    text = ""; //clear input
   }
 }
 

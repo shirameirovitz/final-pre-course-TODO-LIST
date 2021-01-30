@@ -10,14 +10,3 @@
         "date": 1611661776177
     }
 ]
-//add checkbox
-let checkbox = document.createElement('input');
-let label = document.createElement('label');
-label.htmlFor = "switch";
-checkbox.id = "switch";
-checkbox.type = "checkbox";
-checkbox.value = 1;
-checkbox.name = "todo[]";
-li.appendChild(checkbox);
-li.appendChild(label);
-console.log(li);

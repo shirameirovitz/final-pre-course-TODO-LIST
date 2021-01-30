@@ -36,8 +36,8 @@ h1 {
 }
 #sort {
     background-color: rgb(83, 146, 102);
-    width:60px;
-    height: 60px;
+    width:50px;
+    height: 50px;
     color: rgb(3, 51, 43);
     border-color: rgb(250, 241, 241);
     text-align: center;
@@ -57,13 +57,13 @@ h1 {
 }
 ul {
     list-style-type: none;
-    margin-top: 40px;
-    padding-left:0;
+    padding:0;
 }
 li{
     display: flex; 
     outline:none;
     border-bottom: solid 2px #c4df9b; 
+    padding-left: 400px;
 }
 .checkbox{
   top: 0;
