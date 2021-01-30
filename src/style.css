@@ -1,31 +1,59 @@
  
 body { 
   font-family: Lato, Arial;
-  background-color: #e74c3c;
-  margin-top:5%;
-  
+  background-image:url('tree.jpg');
+background-repeat:no-repeat;
+background-size:cover;
+margin-top: 5%;
+ 
 }
 h1 {
     margin-left:40%;
   font-weight: normal;
-  font-size: 46px;
+  font-size: 54px;
   text-transform: uppercase;
   display: block;
     padding-left: 4px;
+    color: white;
 }
 #input-todo {
     margin-left:40%;
+    margin-top: 20px;
 }
 #todo-list {
     margin-top:30px;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 300px;
+    margin-right: 300px;
     position:center;
-    background-color: orangered;
-    border-top: 50px solid rgb(126, 29, 29);
+    background-color: rgb(83, 146, 102);
+    border-top: 50px solid rgb(3, 51, 43);
 }
 #status {
-    margin-left: 50%;
+    margin-left: 45%;
+    color: white;
+    font-size: 28px;
+    margin-top: 60px;
+}
+#sort {
+    background-color: rgb(83, 146, 102);
+    width:60px;
+    height: 60px;
+    color: rgb(3, 51, 43);
+    border-color: rgb(250, 241, 241);
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    
+    font-weight: bold;
+    border-radius: 50%; 
+}
+#sort:focus {
+    outline: none;
+}
+#sort:hover { 
+    background:none;
+    color:white;
+    
 }
 ul {
     list-style-type: none;
@@ -73,7 +101,7 @@ outline: none;
 input {
     
     margin: 0;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 18px;
     height: 18px;
     padding: 10px;
@@ -85,13 +113,36 @@ input {
 }
 input:focus {
     outline: none;
-    border: none;
+}
+#priority-selector{
+    font-size: 28px;
+    border-radius: 6px;
+    background:none;
+    color: white;
 }
 
+
+#priority-selector:hover {
+    outline: none;
+    border:none;
+    background-color: rgb(83, 146, 102);
+    color: rgb(3, 51, 43);
+    
+}
+
+#priority-selector:active{
+    color:teal;
+}
+
+#priority-selector:focus{
+    outline:none;
+}
 #add-button{
-    background:none;
+    background-color:rgb(83, 146, 102);
     width:50px;
-    color: white;
+    height: 50px;
+    color: rgb(3, 51, 43);
+    border-color: white;
     text-align: center;
     font-size: 36px;
     cursor: pointer;
@@ -100,14 +151,12 @@ input:focus {
     border-radius: 50%;
 }
 #add-button:hover { 
-    background-color: rgb(194, 64, 12);
-    color:rgb(85, 4, 4);
-    border: none;
+    background:none;
+    color:white;
+    border-color: white;
 
 }
 #add-button:focus{
     position: relative;
-    background-color:none;
-    border:none;
     outline:none;
 }
