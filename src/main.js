@@ -29,6 +29,7 @@ function addItem() {
 function createItem(text, priority, date) {
   const list = document.getElementById("list");
   let li = document.createElement("li");
+  li.className ="draggable"
   //add checkbox
   let checkbox = document.createElement("input");
   checkbox.classList = "checkbox";
@@ -36,7 +37,14 @@ function createItem(text, priority, date) {
   checkbox.value = 1;
   checkbox.name = "todo[]";
   li.appendChild(checkbox);
-
+checkbox.addEventListener("click",function() {
+    if (element.checked) {
+        document.getElementsByClassName("todo-priority").style.textDecoration = "line-through";
+      }
+      else {
+        document.getElementsByClassName("todo-priority").style.textDecoration = "none";
+}
+});
   //
   let main = document.createElement("div");
   main.classList.add("todo-container");
@@ -104,13 +112,5 @@ function sortList() {
       }
     }
   }
-}
-//active check list
-document.querySelector("#list").addEventListener("click", function (e) {
-  console.log("dgfhnb");
-  if (e.target.tagName === "li") {
-    e.target.style.textDecoration = "line-through";
-    e.target.style.color = "gray";
-    console.log("hfdhd");
-  }
-});
+};
+//drag elements in the list
