@@ -10,17 +10,17 @@
   <h1>My TODO-List</h1>
     <div id="status">
       <span id="counter">0</span>
-      <span>TODOs</span>
-      <button id="sort" onclick="sortList()">sort</button>
+      <span id="counterTitle">TODOs </span>
+      <button id="sort-button" onclick="sortList()">sort</button>
     </div>
     <div id="input-todo">
         <input id="text-input" onkeypress="handleKeyPress(event)"></input>
         <select id="priority-selector">
-            <option value="1:">1</option>
-            <option value="2:">2</option>
-            <option value="3:">3</option>
-            <option value="4:">4</option>
-            <option value="5:">5</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
         </select>
         <button id="add-button" onclick="addItem()">+</button>
     </div>
