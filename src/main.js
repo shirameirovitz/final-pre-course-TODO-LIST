@@ -14,12 +14,15 @@ function loadData(data) {
 }
 
 function addItem() {
-  const text = document.getElementById("text-input").value;
-  if (text) {
+  const text = document.getElementById("text-input");
+
+  if (text.value !== "") {
     const priority = document.getElementById("priority-selector").value;
     const date = new Date().toISOString().slice(0, 19).replace("T", " ");
-    createItem(text, priority, date);
-    text = ""; //clear input
+    createItem(text.value, priority, date);
+    text.value = "";
+  } else {
+    alert("PLEASE WRITE SOMETHING!");
   }
 }
 
@@ -28,14 +31,12 @@ function createItem(text, priority, date) {
   let li = document.createElement("li");
   //add checkbox
   let checkbox = document.createElement("input");
-  let i = document.createElement("i");
   checkbox.classList = "checkbox";
   checkbox.type = "checkbox";
   checkbox.value = 1;
   checkbox.name = "todo[]";
   li.appendChild(checkbox);
-  li.appendChild(checkbox);
-  
+
   //
   let main = document.createElement("div");
   main.classList.add("todo-container");
@@ -59,6 +60,18 @@ function createItem(text, priority, date) {
 
   li.appendChild(main);
   list.appendChild(li);
+
+  //add close button
+  let close = document.createElement("button");
+  close.classList = "remove-button";
+  close.textContent = "X";
+  li.appendChild(close);
+  var closebtns = document.querySelectorAll(".remove-button");
+  Array.from(closebtns).forEach((item) => {
+    item.addEventListener("click", () => {
+      item.parentElement.style.display = "none";
+    });
+  });
 
   //Counter increase
   let counter = document.getElementById("counter");
@@ -92,3 +105,12 @@ function sortList() {
     }
   }
 }
+//active check list
+document.querySelector("#list").addEventListener("click", function (e) {
+  console.log("dgfhnb");
+  if (e.target.tagName === "li") {
+    e.target.style.textDecoration = "line-through";
+    e.target.style.color = "gray";
+    console.log("hfdhd");
+  }
+});
