@@ -17,10 +17,6 @@ function loadData(data) {
     }
   }
 }
-
-//clenning json
-//editJson([]);
-
 function addItem() {
   const text = document.getElementById("text-input");
 
@@ -39,7 +35,6 @@ function addItem() {
     alert("PLEASE WRITE SOMETHING!");
   }
 }
-
 //creates a new list item
 function createItem(text, priority, date) {
   const list = document.getElementById("list");
@@ -62,7 +57,6 @@ function createItem(text, priority, date) {
   //
   let main = document.createElement("div");
   main.classList.add("todo-container");
-
   //priority
   let priorityDiv = document.createElement("div");
   priorityDiv.className = "todo-priority";
@@ -85,20 +79,16 @@ function createItem(text, priority, date) {
   let deleteBtn = document.createElement("button");
   deleteBtn.classList = "remove-button";
   deleteBtn.innerHTML = '<img src="images/remove.png" />';
-
-  //
   deleteBtn.addEventListener("click", () => {
     li.parentNode.removeChild(li);
     update();
   });
   li.appendChild(deleteBtn);
   list.appendChild(li);
-
   //Counter increase
   let counter = document.getElementById("counter");
   counter.innerHTML = Number(document.getElementById("counter").innerHTML) + 1;
 }
-
 //active enter key - submit todo
 function handleKeyPress(e) {
   var key = e.keyCode || e.key;
@@ -116,7 +106,6 @@ function showSearch(){
 //finding the search word on the list
 function onSearch(e) {
   const input = document.getElementById("search-input").value;
-
   let list = document.getElementById("list");
     let items = list.getElementsByTagName("li");
   if (input) {
@@ -136,13 +125,11 @@ function onSearch(e) {
     }
   }
 }
-
 //the sort list
 function sortList() {
   //event.preventDefault();
   let list = document.getElementById("list");
   let items = list.getElementsByTagName("li");
-
   for (let j = 0; j < items.length; j++) {
     for (let i = 0; i < items.length - 1 - j; i++) {
       let firstValue = items[i].getElementsByClassName("todo-priority")[0]
@@ -157,7 +144,6 @@ function sortList() {
     }
   }
 }
-
 function update() {
   liArr = document.getElementsByClassName("todo-container");
   data = [];
@@ -171,7 +157,6 @@ function update() {
   }
   editJson(data);
 }
-
 function editJson(data) {
   //update json
   fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40", {

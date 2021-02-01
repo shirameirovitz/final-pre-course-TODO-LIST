@@ -23,13 +23,16 @@ THE TODO LIST is a single webpage containing different list items and a text are
     I used JSONbin.io to store JSON data for my web app persistent. I created the data via API by the API  REFERENCE V3 (BETA).Then, i added to the main.js HTTP request that initiates the actions on the server. the "GET" method used to request data and the "PUT" method replaces an existing bin via the API. 
     - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch.
     - https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages.  
-  - query media:
   - **Delete a todo**- 
+  the user can delete a task by clicking on the trash button thats in the right corner of the task.
   - **Search and highlight results**-
    To make it easier for the user to find a specific task I created a "search" button that opens a new input to the page. In that input you can write a word and if that word exists in the list it will popup.
   - **Scrollbar list**-
    to make a better user experience on my TODO website I added a scroller to the to do list. That way you would not need to scroll across all the page to get to your latest tasks.
     - https://stackoverflow.com/questions/21998679/css-how-to-make-scrollable-list.
+  - **Mark/unmark todo as done**-
+   to see which tasks are done i added a empty box on the left corner of the task and by clicking on it, it will show a v mark inside the box and a line-through the text. That way the user will know which tasks he already done and which one he should still do.
+    - https://www.w3schools.com/cssref/pr_text_text-decoration.asp.
 
 
 
@@ -37,17 +40,5 @@ THE TODO LIST is a single webpage containing different list items and a text are
 
 
 
-
-- Code quality and style: indentation, Meaningful and non-disambiguate variable names, Comments documentation
-- Visual creativity, use css to make this app look awesome 💅🏿
-- Division to reusable functions, no code duplication
-- Git usage: meaningful commit messages, small commits, folder and file structures
-
-## Submitting
-
-- Change this file (README.md) and style it to showcase your solution (gifs, explanations, link to the github page, links to resources you used, etc...)
-- Submit your solution repo to the [ChallengeMe](http://challengeme.suvelocity.org/) system
-- Submit your repo link and github page and video to Google Classroom
-- Record a 5-10 min selfie video, describe yourself in a few words (age, location, military background, technological background). Also, talk about the solution you submitted (try to explain how your app works in general and which bonuses you added). Think about this video as an interview.
 
 
