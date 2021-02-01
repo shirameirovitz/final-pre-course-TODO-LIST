@@ -19,7 +19,7 @@ THE TODO LIST is a single webpage containing different list items and a text are
 
 ## Bonus -that I added to the Web:
 
-  - jsonbin.io 
+  - JSONbin.io- To store the JSON data for my web and use the data with other services like jsBin or Codepen.Then i created the data via API by the API  REFERENCE V3 (BETA).  (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch, https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages).  
   - query media:
   - Delete a todo
   - Undo action
@@ -28,12 +28,10 @@ THE TODO LIST is a single webpage containing different list items and a text are
   - Scrollbar list- (https://stackoverflow.com/questions/21998679/css-how-to-make-scrollable-list).
 - For added value, you can add jest/puppeteer test to test any bonus feature you implemented
 
-**Add an explanation in `README.md` for each bonus feature you add and a link to any resoure you used**
 
-## Grading policy
 
-- Your project will be graded by the number of automatic tests you pass
-- Using jsonbin.io
+
+
 - Extra freestyle features - Please add an explanation about the bonus features you added to the readme.md
 - new jest/puppeteer test
 - Code quality and style: indentation, Meaningful and non-disambiguate variable names, Comments documentation

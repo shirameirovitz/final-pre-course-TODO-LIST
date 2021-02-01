@@ -107,6 +107,7 @@ function handleKeyPress(e) {
 
 //the sort list
 function sortList() {
+  //event.preventDefault();
   let list = document.getElementById("list");
   let items = list.getElementsByTagName("li");
 
@@ -116,7 +117,7 @@ function sortList() {
         .innerText;
       let secondValue = items[i + 1].getElementsByClassName("todo-priority")[0]
         .innerText;
-      if (firstValue > secondValue) {
+      if (firstValue < secondValue) {
         let firstItem = items[i];
         let secondItem = items[i + 1];
         firstItem.parentNode.insertBefore(secondItem, firstItem);
@@ -124,7 +125,6 @@ function sortList() {
     }
   }
 }
-
 function update() {
   liArr = document.getElementsByClassName("todo-container");
   data = [];
