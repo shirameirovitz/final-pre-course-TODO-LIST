@@ -19,21 +19,25 @@ THE TODO LIST is a single webpage containing different list items and a text are
 
 ## Bonus -that I added to the Web:
 
-  - JSONbin.io- To store the JSON data for my web and use the data with other services like jsBin or Codepen.Then i created the data via API by the API  REFERENCE V3 (BETA).  (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch, https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages).  
+  - **JSONbin.io**-
+    I used JSONbin.io to store JSON data for my web app persistent. I created the data via API by the API  REFERENCE V3 (BETA).Then, i added to the main.js HTTP request that initiates the actions on the server. the "GET" method used to request data and the "PUT" method replaces an existing bin via the API. 
+    - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch.
+    - https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages.  
   - query media:
-  - Delete a todo
-  - Undo action
-  - Search and highlight results
-  - Loading spinner for network request
-  - Scrollbar list- (https://stackoverflow.com/questions/21998679/css-how-to-make-scrollable-list).
-- For added value, you can add jest/puppeteer test to test any bonus feature you implemented
+  - **Delete a todo**- 
+  - **Search and highlight results**-
+   To make it easier for the user to find a specific task I created a "search" button that opens a new input to the page. In that input you can write a word and if that word exists in the list it will popup.
+  - **Scrollbar list**-
+   to make a better user experience on my TODO website I added a scroller to the to do list. That way you would not need to scroll across all the page to get to your latest tasks.
+    - https://stackoverflow.com/questions/21998679/css-how-to-make-scrollable-list.
 
 
 
 
 
-- Extra freestyle features - Please add an explanation about the bonus features you added to the readme.md
-- new jest/puppeteer test
+
+
+
 - Code quality and style: indentation, Meaningful and non-disambiguate variable names, Comments documentation
 - Visual creativity, use css to make this app look awesome 💅🏿
 - Division to reusable functions, no code duplication
@@ -46,4 +50,4 @@ THE TODO LIST is a single webpage containing different list items and a text are
 - Submit your repo link and github page and video to Google Classroom
 - Record a 5-10 min selfie video, describe yourself in a few words (age, location, military background, technological background). Also, talk about the solution you submitted (try to explain how your app works in general and which bonuses you added). Think about this video as an interview.
 
-GOOD LUCK!
+

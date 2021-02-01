@@ -9,15 +9,18 @@ fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40", {
   .then((res) => res.json())
   .then((data) => loadData(data["record"]["my-todo"]));
 
-async function loadData(data) {
-  console.log(data)
+function loadData(data) {
+  console.log(data);
   if (data) {
     for (let i = 0; i < data.length; i++) {
-      await createItem(data[i].text, data[i].priority, data[i].date);
+      createItem(data[i].text, data[i].priority, data[i].date);
     }
   }
 }
-//inside the input
+
+//clenning json
+//editJson([]);
+
 function addItem() {
   const text = document.getElementById("text-input");
 
@@ -26,8 +29,8 @@ function addItem() {
     const priority = document.getElementById("priority-selector");
     const date = new Date().toISOString().slice(0, 19).replace("T", " ");
 
-    createItem(text.value, priority.value, date);//create list item
-    update();//update json
+    createItem(text.value, priority.value, date); //create list item
+    update(); //update json
 
     //reset inputs
     text.value = "";
@@ -51,7 +54,6 @@ function createItem(text, priority, date) {
   checkbox.addEventListener("click", function (e) {
     if (this.checked) {
       li.style.textDecorationLine = "line-through";
-      li.style.textDecorationColor ="rgb(83, 146, 102)"
     } else {
       li.style.textDecorationLine = "none";
     }
@@ -78,12 +80,11 @@ function createItem(text, priority, date) {
   main.appendChild(textDiv);
   li.appendChild(main);
 
-
   //add delete button
   let deleteBtn = document.createElement("button");
   deleteBtn.classList = "remove-button";
   deleteBtn.innerHTML = '<img src="images/remove.png" />';
-  
+
   //
   deleteBtn.addEventListener("click", () => {
     li.parentNode.removeChild(li);
@@ -102,6 +103,36 @@ function handleKeyPress(e) {
   var key = e.keyCode || e.key;
   if (key === 13) {
     addItem();
+  }
+}
+
+function showSearch(){
+  const searchElement = document.getElementById("search-input");
+  const status = searchElement.style.display;
+  if(status === "none")searchElement.style.display = ""
+  else searchElement.style.display = "none"
+}
+
+function onSearch(e) {
+  const input = document.getElementById("search-input").value;
+
+  let list = document.getElementById("list");
+    let items = list.getElementsByTagName("li");
+  if (input) {
+    for (let i = 0; i < items.length; i++) {
+      const text = items[i].getElementsByClassName("todo-text")[0].innerText;
+      if (!text.includes(input)) {
+        items[i].style.display="none"
+      }
+      else{
+        items[i].style.display=""
+      }
+    }
+  }
+  else{
+    for (let i = 0; i < items.length; i++) {
+      items[i].style.display=""
+    }
   }
 }
 
@@ -125,17 +156,19 @@ function sortList() {
     }
   }
 }
+
 function update() {
   liArr = document.getElementsByClassName("todo-container");
   data = [];
   for (let i = 0; i < liArr.length; i++) {
-    const priority = liArr[i].getElementsByClassName("todo-priority")[0].innerText;
-    const date = liArr[i].getElementsByClassName("todo-created-at")[0].innerText;
+    const priority = liArr[i].getElementsByClassName("todo-priority")[0]
+      .innerText;
+    const date = liArr[i].getElementsByClassName("todo-created-at")[0]
+      .innerText;
     const text = liArr[i].getElementsByClassName("todo-text")[0].innerText;
     data.push({ priority, date, text });
   }
   editJson(data);
-
 }
 
 function editJson(data) {
@@ -146,7 +179,7 @@ function editJson(data) {
       "Content-Type": "application/json",
       "X-Master-Key":
         "$2b$10$rT9KA7aWo7ylVFwC/8i9yudVXkXAns0O7nj/vzhOi8BKQg.qYxU1e",
-        "X-Bin-Versioning": "false",
+      "X-Bin-Versioning": "false",
     },
     body: JSON.stringify({ "my-todo": data }),
   }); //.then((res) => res.json());
