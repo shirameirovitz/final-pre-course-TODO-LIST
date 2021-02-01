@@ -1,4 +1,4 @@
-//load data from json.bin
+//Get latest TODO Json from the api 
 fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40", {
   method: "GET",
   headers: {
@@ -7,17 +7,29 @@ fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40", {
   },
 })
   .then((res) => res.json())
-  .then((data) => loadData(data["record"]["my-todo"]));
+  .then((data) => loadData(data["record"]["my-todo"]))
+  .catch((error)=>{
+    document.getElementById("message").innerHTML = "ERROR!";
+    document.getElementById("status-bar").style.display = "";
+    alert(error)
+  });
 
+//load list from json
 function loadData(data) {
-  console.log(data);
   if (data) {
     for (let i = 0; i < data.length; i++) {
       createItem(data[i].text, data[i].priority, data[i].date);
     }
   }
+  document.getElementById("status-bar").style.display = "none";
 }
+
+//onClick add item button
 function addItem() {
+  //update status bar
+  document.getElementById("message").innerHTML = "Inserting a new TODO...";
+  document.getElementById("status-bar").style.display = "";
+
   const text = document.getElementById("text-input");
 
   //check for input
@@ -30,11 +42,12 @@ function addItem() {
 
     //reset inputs
     text.value = "";
-    //priority.value = 1;
+    priority.value = 1;
   } else {
     alert("PLEASE WRITE SOMETHING!");
   }
 }
+
 //creates a new list item
 function createItem(text, priority, date) {
   const list = document.getElementById("list");
@@ -49,7 +62,6 @@ function createItem(text, priority, date) {
   checkbox.addEventListener("click", function (e) {
     if (this.checked) {
       li.style.textDecorationLine = "line-through";
-      li.style.textDecorationColor = "rgb(83, 146, 102)";
     } else {
       li.style.textDecorationLine = "none";
     }
@@ -57,6 +69,7 @@ function createItem(text, priority, date) {
   //
   let main = document.createElement("div");
   main.classList.add("todo-container");
+
   //priority
   let priorityDiv = document.createElement("div");
   priorityDiv.className = "todo-priority";
@@ -79,16 +92,24 @@ function createItem(text, priority, date) {
   let deleteBtn = document.createElement("button");
   deleteBtn.classList = "remove-button";
   deleteBtn.innerHTML = '<img src="images/remove.png" />';
+
+  //onclick function for delete Btn
   deleteBtn.addEventListener("click", () => {
-    li.parentNode.removeChild(li);
-    update();
+    //update status bar
+    document.getElementById("message").innerHTML = "Removing a TODO...";
+    document.getElementById("status-bar").style.display = "";
+    
+    update();//update json
+    li.parentNode.removeChild(li);//remove list item
   });
   li.appendChild(deleteBtn);
   list.appendChild(li);
+
   //Counter increase
   let counter = document.getElementById("counter");
   counter.innerHTML = Number(document.getElementById("counter").innerHTML) + 1;
 }
+
 //active enter key - submit todo
 function handleKeyPress(e) {
   var key = e.keyCode || e.key;
@@ -96,46 +117,47 @@ function handleKeyPress(e) {
     addItem();
   }
 }
-//displaying the search
-function showSearch(){
+
+//show/hide search input
+function showSearch() {
   const searchElement = document.getElementById("search-input");
   const status = searchElement.style.display;
-  if(status === "none")searchElement.style.display = ""
-  else searchElement.style.display = "none"
+  if (status === "none") searchElement.style.display = "";
+  else searchElement.style.display = "none";
 }
-//finding the search word on the list
+
+//search and filter a TODO in the list
 function onSearch(e) {
   const input = document.getElementById("search-input").value;
+
   let list = document.getElementById("list");
-    let items = list.getElementsByTagName("li");
+  let items = list.getElementsByTagName("li");
   if (input) {
     for (let i = 0; i < items.length; i++) {
       const text = items[i].getElementsByClassName("todo-text")[0].innerText;
-      if (!text.includes(input)) {
-        items[i].style.display="none"
-      }
-      else{
-        items[i].style.display=""
+      if (text.includes(input)) {
+        items[i].style.display = "";
+      } else {
+        items[i].style.display = "none";
       }
     }
-  }
-  else{
+  } else {
+    //reset list
     for (let i = 0; i < items.length; i++) {
-      items[i].style.display=""
+      items[i].style.display = "";
     }
   }
 }
-//the sort list
+
+//sort list by priority from high to low
 function sortList() {
-  //event.preventDefault();
   let list = document.getElementById("list");
   let items = list.getElementsByTagName("li");
+
   for (let j = 0; j < items.length; j++) {
     for (let i = 0; i < items.length - 1 - j; i++) {
-      let firstValue = items[i].getElementsByClassName("todo-priority")[0]
-        .innerText;
-      let secondValue = items[i + 1].getElementsByClassName("todo-priority")[0]
-        .innerText;
+      let firstValue = items[i].getElementsByClassName("todo-priority")[0].innerText;
+      let secondValue = items[i + 1].getElementsByClassName("todo-priority")[0].innerText;
       if (firstValue < secondValue) {
         let firstItem = items[i];
         let secondItem = items[i + 1];
@@ -144,21 +166,22 @@ function sortList() {
     }
   }
 }
+
+//Update json by list
 function update() {
   liArr = document.getElementsByClassName("todo-container");
   data = [];
   for (let i = 0; i < liArr.length; i++) {
-    const priority = liArr[i].getElementsByClassName("todo-priority")[0]
-      .innerText;
-    const date = liArr[i].getElementsByClassName("todo-created-at")[0]
-      .innerText;
+    const priority = liArr[i].getElementsByClassName("todo-priority")[0].innerText;
+    const date = liArr[i].getElementsByClassName("todo-created-at")[0].innerText;
     const text = liArr[i].getElementsByClassName("todo-text")[0].innerText;
     data.push({ priority, date, text });
   }
   editJson(data);
 }
+
+//update JSONBIN
 function editJson(data) {
-  //update json
   fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40", {
     method: "PUT",
     headers: {
@@ -168,5 +191,12 @@ function editJson(data) {
       "X-Bin-Versioning": "false",
     },
     body: JSON.stringify({ "my-todo": data }),
-  }); //.then((res) => res.json());
+  }).then(() => {
+    document.getElementById("status-bar").style.display = "none";
+  })
+  .catch((error)=>{
+    document.getElementById("message").innerHTML = "ERROR!";
+    document.getElementById("status-bar").style.display = "";
+    alert(error);
+  });
 }

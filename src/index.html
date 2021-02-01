@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>TODO</title>
+    <link rel="icon" type="image/png" href="images/icon.png"/>
+
 </head>
 <body>
-  <h1>My TODO-List</h1>
+  <h1 id="title">My TODO-List</h1>
     <div id="status">
       <span id="counter">0</span>
       <span id="counterTitle">TODOs </span>
@@ -15,8 +17,10 @@
       
     </div>
     <div id="input-todo">
-        <input id="text-input" placeholder="Insert ToDo text" onkeypress="handleKeyPress(event)"></input>
-      
+        <div id="textBox">
+            <input id="text-input" placeholder="Insert ToDo text" onkeypress="handleKeyPress(event)"></input>
+            <input id="search-input" placeholder="search ToDo" onInput="onSearch(event)" style="display: none;"></input>
+        </div> 
         <select id="priority-selector">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -25,12 +29,11 @@
             <option value="5">5</option>
         </select>
         <button id="add-button" onclick="addItem()">+</button>
+        <button id="search-button" onclick="showSearch()">search</button>
     </div>
-    <div id="search"></div>
-    <button id="search-button" onclick="showSearch()">search</button>
-    <input id="search-input" placeholder="search ToDo" onInput="onSearch(event)" style="display: none;"></input>
+    <div id="status-bar">
+        <span id="message">Loading...</span>
     </div>
-    
     <div id="todo-list">
         
         <ul id="list">
@@ -39,7 +42,4 @@
 
     <script src="main.js"></script>
 </body>
-<script>
-
-</script>
 </html>

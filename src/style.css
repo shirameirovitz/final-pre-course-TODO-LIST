@@ -18,6 +18,8 @@ h1 {
 }
 #input-todo {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 #todo-list {
   margin-top: 30px;
@@ -67,8 +69,6 @@ h1 {
   cursor: pointer;
   font-weight: bold;
   border-radius: 50%;
-  margin-left: 468px;
-  margin-top: 10px;
 }
 #search-button:focus{
   outline: none;
@@ -145,6 +145,10 @@ input:focus {
   border-radius: 6px;
   background: none;
   color: white;
+  display: flex;
+  align-self: baseline;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 #priority-selector:hover {
   outline: none;
@@ -169,6 +173,8 @@ input:focus {
   cursor: pointer;
   font-weight: bold;
   border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 #add-button:hover {
   background: none;
@@ -197,7 +203,26 @@ input:focus {
 .remove-button:focus {
   outline: none;
 }
+#title{
+  display: flex;
+  justify-content: center;
+}
 #counterTitle{
   margin-left: 10px;
   margin-right: 10px;
+}
+#textBox{
+  display: grid;
+}
+#search-input{
+  margin-top: 10px;
+}
+#status-bar{
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+#message{
+  color: white;
+  font-size: 20px;
 }
