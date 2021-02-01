@@ -12,11 +12,11 @@
       <span id="counter">0</span>
       <span id="counterTitle">TODOs </span>
       <button id="sort-button" onclick="sortList()">sort</button>
-      <button id="sort-button" onclick="showSearch()">search</button>
+      
     </div>
     <div id="input-todo">
         <input id="text-input" placeholder="Insert ToDo text" onkeypress="handleKeyPress(event)"></input>
-        <input id="search-input" placeholder="search ToDo" onInput="onSearch(event)" style="display: none;"></input>
+      
         <select id="priority-selector">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -26,7 +26,13 @@
         </select>
         <button id="add-button" onclick="addItem()">+</button>
     </div>
+    <div id="search"></div>
+    <button id="search-button" onclick="showSearch()">search</button>
+    <input id="search-input" placeholder="search ToDo" onInput="onSearch(event)" style="display: none;"></input>
+    </div>
+    
     <div id="todo-list">
+        
         <ul id="list">
         </ul>
     </div>

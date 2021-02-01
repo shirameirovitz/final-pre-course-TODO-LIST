@@ -54,6 +54,7 @@ function createItem(text, priority, date) {
   checkbox.addEventListener("click", function (e) {
     if (this.checked) {
       li.style.textDecorationLine = "line-through";
+      li.style.textDecorationColor = "rgb(83, 146, 102)";
     } else {
       li.style.textDecorationLine = "none";
     }
@@ -105,14 +106,14 @@ function handleKeyPress(e) {
     addItem();
   }
 }
-
+//displaying the search
 function showSearch(){
   const searchElement = document.getElementById("search-input");
   const status = searchElement.style.display;
   if(status === "none")searchElement.style.display = ""
   else searchElement.style.display = "none"
 }
-
+//finding the search word on the list
 function onSearch(e) {
   const input = document.getElementById("search-input").value;
 
