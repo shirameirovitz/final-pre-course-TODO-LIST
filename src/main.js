@@ -1,6 +1,23 @@
-//clenning json
-editJson([]);
+//load data from json.bin
+fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40", {
+  method: "GET",
+  headers: {
+    "X-Master-Key":
+      "$2b$10$rT9KA7aWo7ylVFwC/8i9yudVXkXAns0O7nj/vzhOi8BKQg.qYxU1e",
+  },
+})
+  .then((res) => res.json())
+  .then((data) => loadData(data["record"]["my-todo"]));
 
+async function loadData(data) {
+  console.log(data)
+  if (data) {
+    for (let i = 0; i < data.length; i++) {
+      await createItem(data[i].text, data[i].priority, data[i].date);
+    }
+  }
+}
+//inside the input
 function addItem() {
   const text = document.getElementById("text-input");
 
@@ -34,6 +51,7 @@ function createItem(text, priority, date) {
   checkbox.addEventListener("click", function (e) {
     if (this.checked) {
       li.style.textDecorationLine = "line-through";
+      li.style.textDecorationColor ="rgb(83, 146, 102)"
     } else {
       li.style.textDecorationLine = "none";
     }
@@ -120,16 +138,16 @@ function update() {
 
 }
 
-function editJson(data){
-    //update json
-    fetch("https://api.jsonbin.io/b/60170a4a0ba5ca5799d1c74b", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "secret-key":
-          "$2b$10$rT9KA7aWo7ylVFwC/8i9yudVXkXAns0O7nj/vzhOi8BKQg.qYxU1e",
-        versioning: "false",
-      },
-      body: JSON.stringify({ todos: data }),
-    })//.then((res) => res.json());
+function editJson(data) {
+  //update json
+  fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Master-Key":
+        "$2b$10$rT9KA7aWo7ylVFwC/8i9yudVXkXAns0O7nj/vzhOi8BKQg.qYxU1e",
+        "X-Bin-Versioning": "false",
+    },
+    body: JSON.stringify({ "my-todo": data }),
+  }); //.then((res) => res.json());
 }
