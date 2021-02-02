@@ -33,7 +33,7 @@ THE TODO LIST is a single webpage containing different list items and a text are
   - **Mark/unmark todo as done**-
    to see which tasks are done i added a empty box on the left corner of the task and by clicking on it, it will show a v mark inside the box and a line-through the text. That way the user will know which tasks he already done and which one he should still do.
     - https://www.w3schools.com/cssref/pr_text_text-decoration.asp.
-
+  - *Loading Status bar for network request* - Status indicator for user experience. Showing the status of each request to the JSONBin api for better UX. Updates: "Loading Data", "Inserting a TODO", "Removing a TODO" and "ERROR!".
 
 
 **FIND MY WEBSITE IN THE FOLLOWING LINK:** https://shirameirovitz.github.io/pre-course-2021-final-boilerplate/src/
