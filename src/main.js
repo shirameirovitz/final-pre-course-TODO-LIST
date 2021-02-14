@@ -1,5 +1,5 @@
 //Get latest TODO Json from the api 
-fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40/latest", {
+fetch("https://api.jsonbin.io/v3/b/6029475e435c323ba1c6392e/latest", {
   method: "GET",
   headers: {
     "X-Master-Key":
@@ -99,8 +99,9 @@ function createItem(text, priority, date) {
     document.getElementById("message").innerHTML = "Removing a TODO...";
     document.getElementById("status-bar").style.display = "";
     
-    update();//update json
     li.parentNode.removeChild(li);//remove list item
+    update();//update json
+    
   });
   li.appendChild(deleteBtn);
   list.appendChild(li);
@@ -182,7 +183,7 @@ function update() {
 
 //update JSONBIN
 function editJson(data) {
-  fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40", {
+  fetch("https://api.jsonbin.io/v3/b/6029475e435c323ba1c6392e", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
