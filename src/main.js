@@ -26,10 +26,7 @@ function loadData(data) {
 
 //onClick add item button
 function addItem() {
-  //update status bar
-  document.getElementById("message").innerHTML = "Inserting a new TODO...";
-  document.getElementById("status-bar").style.display = "";
-
+ 
   const text = document.getElementById("text-input");
 
   //check for input
@@ -38,6 +35,10 @@ function addItem() {
     const date = new Date().toISOString().slice(0, 19).replace("T", " ");
 
     createItem(text.value, priority.value, date); //create list item
+     //update status bar
+  document.getElementById("message").innerHTML = "Inserting a new TODO...";
+  document.getElementById("status-bar").style.display = "";
+
     update(); //update json
 
     //reset inputs
