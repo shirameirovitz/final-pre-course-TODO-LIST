@@ -96,6 +96,7 @@ function createItem(text, priority, date) {
   //onclick function for delete Btn
   deleteBtn.addEventListener("click", () => {
     //update status bar
+    counter.innerHTML = Number(document.getElementById("counter").innerHTML) - 1;
     document.getElementById("message").innerHTML = "Removing a TODO...";
     document.getElementById("status-bar").style.display = "";
     
