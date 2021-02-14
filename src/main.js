@@ -1,5 +1,5 @@
 //Get latest TODO Json from the api 
-fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40", {
+fetch("https://api.jsonbin.io/v3/b/6017e3d85415b40ac2208a40/latest", {
   method: "GET",
   headers: {
     "X-Master-Key":
