@@ -152,7 +152,6 @@ input:focus {
 }
 #priority-selector:hover {
   outline: none;
-  border: none;
 }
 #priority-selector:active {
   color: teal;
