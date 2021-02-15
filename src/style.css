@@ -143,8 +143,8 @@ input:focus {
 #priority-selector {
   font-size: 28px;
   border-radius: 6px;
-  background: none;
-  color: white;
+  background-color: rgb(83, 146, 102);
+  color: rgb(3, 51, 43);
   display: flex;
   align-self: baseline;
   margin-left: 5px;
@@ -153,8 +153,6 @@ input:focus {
 #priority-selector:hover {
   outline: none;
   border: none;
-  background-color: rgb(83, 146, 102);
-  color: rgb(3, 51, 43);
 }
 #priority-selector:active {
   color: teal;
