@@ -1,5 +1,5 @@
 //Get latest TODO Json from the api 
-fetch("http://localhost:3001/api/v3/b/1613733860787", {
+fetch("https://api.jsonbin.io/v3/b/6029475e435c323ba1c6392e/latest", {
   method: "GET",
   headers: {
     "X-Master-Key":
@@ -7,7 +7,7 @@ fetch("http://localhost:3001/api/v3/b/1613733860787", {
   },
 })
   .then((res) => res.json())
-  .then((data) => loadData(data["my-todo"]))
+  .then((data) => loadData(data["record"]["my-todo"]))
   .catch((error)=>{
     document.getElementById("message").innerHTML = "ERROR!";
     document.getElementById("status-bar").style.display = "";
@@ -185,7 +185,7 @@ function update() {
 
 //update JSONBIN
 function editJson(data) {
-  fetch("http://localhost:3001/api/v3/b/1613733860787", {
+  fetch("https://api.jsonbin.io/v3/b/6029475e435c323ba1c6392e", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
